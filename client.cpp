@@ -1,6 +1,7 @@
 #include <drogon/drogon.h>
 #include <drogon/HttpClient.h>
 #include <drogon/WebSocketClient.h>
+#include <list>
 
 using namespace drogon;
 std::list<WebSocketClientPtr> clientHolder;
