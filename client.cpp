@@ -9,9 +9,10 @@ std::list<WebSocketClientPtr> clientHolder;
 void runWsOnAllThread()
 {
     size_t numClient = 900;
+    const size_t numThreads = app().getThreadNum();
     for(size_t i=0;i<numClient;i++)
     {
-        auto loop = app().getLoop();
+        auto loop = app().getIOLoop(i%numThreads);
         auto wsClient = WebSocketClient::newWebSocketClient("ws://127.0.0.1:8848", loop);
         auto req = HttpRequest::newHttpRequest();
         req->setPath("/benchmark");
